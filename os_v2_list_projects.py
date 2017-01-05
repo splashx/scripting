@@ -7,7 +7,6 @@ from keystoneclient.v2_0 import client
 from keystoneclient.v2_0 import tokens
 import os
 import requests
-import json 
 
 username = os.environ.get('OS_USERNAME')
 password = os.environ.get('OS_PASSWORD')
@@ -19,8 +18,8 @@ headers = {'X-Auth-Token': token }
 tenant_url = auth_url
 tenant_url += '/tenants'
 r = requests.get(tenant_url, headers=headers)
-tenants_raw = r.text
-tenant_data = json.loads(tenants_raw)
+tenant_data = r.json()
+
 
 for tenant in tenant_data['tenants']: 
    print tenant['name']
