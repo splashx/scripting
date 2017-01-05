@@ -13,7 +13,6 @@ username = os.environ.get('OS_USERNAME')
 password = os.environ.get('OS_PASSWORD')
 auth_url = os.environ.get('OS_AUTH_URL')
 
-# keystone = client.Client(username=username, password=password, tenant_name=tenant_name, auth_url=auth_url)
 keystone = client.Client(username=username, password=password, auth_url=auth_url)
 token = keystone.auth_token
 headers = {'X-Auth-Token': token }
